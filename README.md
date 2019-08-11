@@ -2,7 +2,7 @@
 
 [Project Euler.net](https://projecteuler.net/) contains amazing mathematical puzzles.
 The majority of them require programming a computer to find the solution.
-(e.g. Problem #3: Find the largest palindrome made from the product of two 3-digit numbers.)
+(e.g. Problem #4: Find the largest palindrome made from the product of two 3-digit numbers.)
 
 The project discourages users from publishing their solutions, as users should be encouraged
 to determine the solution on their own, to experience the joy of the "Aha!" moment that comes

@@ -3,21 +3,6 @@ from euler import *
 
 # What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
-
-# def fact(number):
-#     result = []
-#     i = 2
-#     maxPossibleFactor = math.ceil(number/2)
-#     while ( i <= maxPossibleFactor ):
-#         if number % i == 0:
-#             result.append(i)
-#             maxPossibleFactor = number / i
-#             result.append(maxPossibleFactor)
-#         i = i+1
-
-#     result.sort()
-#     return result
-
 def isDivisibleAll(number,max):
 	for x in range(2,max+1):
 		if number % x != 0:

@@ -106,5 +106,5 @@ numbers = [
 # I guess it may be harder in other languages without native support for big integers...?
 theSum = sum(numbers)
 firstTen = str(theSum)[:10]
-print theSum
-print "First ten: " + str(firstTen)
+print(theSum)
+print("First ten: " + str(firstTen))

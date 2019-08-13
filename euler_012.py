@@ -21,6 +21,6 @@ while True:
 	if numDivisors > maxD:
 		maxD = numDivisors
 		maxT = triangle
-		print str(triangle) + ": " + str(numDivisors)
+		print(str(triangle) + ": " + str(numDivisors))
 	if numDivisors >= stopNumberDivisors:
 		break

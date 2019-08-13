@@ -10,6 +10,6 @@ for a in range(1,500):
         if math.modf(c)[0] != 0.0:
             continue
         if a+b+c == 1000:
-            print str(a) + " + " + str(b) + " + " + str(c)
-            print a**2 + b**2 == c**2
-            print a*b*c
+            print(str(a) + " + " + str(b) + " + " + str(c))
+            print(a**2 + b**2 == c**2)
+            print(a*b*c)

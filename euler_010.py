@@ -12,4 +12,4 @@ while True:
     if isPrime(x):
         sum += x
     x += 1
-print sum
+print(sum)

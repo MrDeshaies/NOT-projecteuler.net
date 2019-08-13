@@ -53,4 +53,4 @@ for x in range(1,1001):
 	total += length
 	#print str(x) + ": " + text + " => " + stripped + "(" + str(length) + ")"
 
-print total
+print(total)

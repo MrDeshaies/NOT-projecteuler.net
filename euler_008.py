@@ -14,10 +14,10 @@ for start in range(0,len(x)-length+1):
         maxProduct = product
         maxStart = start
 
-print "The biggest product is " + str(maxProduct) + " at position " + str(maxStart)
+print("The biggest product is " + str(maxProduct) + " at position " + str(maxStart))
 for i in range(0,length):
     if i == length-1:
-        print str(x[maxStart+i]) + " = " + str(maxProduct)
+        print(str(x[maxStart+i]) + " = " + str(maxProduct))
     else:
-        print str(x[maxStart+i]) + " x",
+        print(str(x[maxStart+i]) + " x", end = ' ')
 

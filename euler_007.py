@@ -8,6 +8,6 @@ while True:
     if isPrime(x):
         primesFound += 1
     if primesFound == 10001:
-        print x
+        print(x)
         break
     x += 1

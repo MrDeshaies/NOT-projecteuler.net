@@ -18,12 +18,12 @@ def find005Answer():
 	while True:
 		#test divisibility
 		if isDivisibleAll(x,20):
-			print "And the winner is... " + str(x)
-			print "Its factors are " + str(fact(x))
+			print("And the winner is... " + str(x))
+			print("Its factors are " + str(fact(x)))
 			return
 
 		if x > dangerZone:
-			print "Reached " + str(x) + " and didn't find it yet.."
+			print("Reached " + str(x) + " and didn't find it yet..")
 			return
 		# increment...
 		x = x+1
@@ -36,14 +36,14 @@ def find005AnswerFast():
 	# The 20! is a LARGE number, but it's likely one of its factors meets the condition.
 	# I got lucky in the way that it met the condition of being the smallest such number
 	# (I didn't prove that it would be the case)
-	i = math.factorial(20)
+	i = math.factorial(19)
 	for x in fact(i):
 		if isDivisibleAll(x,20):
-			print "And the winner is... " + str(x)
+			print("And the winner is... " + str(x))
 			for k in range(2,21):
-				print str(x) + " / " + str(k) + " = " + str(x/k)
-			print "Its factors are " + str(fact(x))
+				print(str(x) + " / " + str(k) + " = " + str(x/k))
+			print("Its factors are " + str(fact(x)))
 			return
-	print "not found"
+	print("not found")
 
 find005AnswerFast()

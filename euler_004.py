@@ -21,7 +21,7 @@ def find004Answer():
 				largestProd = prod
 				largestX = x
 				largestY = y
-	print "Final answer:"
-	print str(largestX) + " x " + str(largestY) + " = " + str(largestProd)
+	print("Final answer:")
+	print(str(largestX) + " x " + str(largestY) + " = " + str(largestProd))
 
 find004Answer()

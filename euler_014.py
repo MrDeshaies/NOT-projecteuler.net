@@ -34,6 +34,6 @@ while x < stop:
 	if xLen > maxLen:
 		maxLen = xLen
 		maxNum = x
-		print str(maxLen) + " with starting number " + str(maxNum)
+		print(str(maxLen) + " with starting number " + str(maxNum))
 	x += 1
-print str(maxLen) + " with starting number " + str(maxNum)
+print(str(maxLen) + " with starting number " + str(maxNum))

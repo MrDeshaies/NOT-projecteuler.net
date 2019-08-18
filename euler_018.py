@@ -1,5 +1,4 @@
 from triangle_018_067 import triangle
-from triangle_018_067 import findBestPos
 from triangle_018_067 import findLargestSumInTriangle
 
 input = [

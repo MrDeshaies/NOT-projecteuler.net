@@ -1,5 +1,4 @@
 from triangle_018_067 import triangle
-from triangle_018_067 import findBestPos
 from triangle_018_067 import findLargestSumInTriangle
 
 f = open("p067_triangle.txt", "r")
@@ -10,7 +9,7 @@ for line in f:
     triangle.append([int(x) for x in line.split(" ")])
 f.close()
 
-result = findLargestSumInTriangle(5)
+result = findLargestSumInTriangle()
 print(result)
 # print(triangle[0])
 # print(triangle[1])

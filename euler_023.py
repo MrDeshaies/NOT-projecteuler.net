@@ -1,4 +1,5 @@
 from euler import *
+import math
 
 # A perfect number is a number for which the sum of its proper divisors is exactly equal to the number.
 # For example, the sum of the proper divisors of 28 would be 1 + 2 + 4 + 7 + 14 = 28,
@@ -18,11 +19,10 @@ from euler import *
 
 UPPER_LIMIT = 28123
 
-# first, find all abundant number up to upper_limit
 def isAbundant(x):
     return sum(factLessItself(x)) > x
 
-def findAbundantsBelow(limit):
+def findAllAbundantsBelow(limit):
     abundants = []
     for i in range(1,UPPER_LIMIT):
         if isAbundant(i):
@@ -34,26 +34,36 @@ def findAsSumOfTwoAbundants(target,abundants):
     for x in abundants:
         if x > target:
             return [] # didn't find anything
-        for y in abundants:
-            sum = x+y
-            if sum == target:
-                return [x,y]
-            if sum > target:
-                break
-        
+        y = findMatchingY(target, x, abundants)
+        if y != None:
+            return [x,y]
+    return []
 
-abundants = findAbundantsBelow(UPPER_LIMIT)
+def findMatchingY(target, x, abundants):
+    # use binary search to find the correct y
+    l = 0
+    r = len(abundants)-1
+    while l <= r:
+        i = math.floor( (l+r) / 2)
+        sum = abundants[i] + x
+        if sum < target:
+            l = i+1
+        elif sum > target:
+            r = i-1
+        if sum == target:
+            return abundants[i]
+    return None
+
+# first, find all abundant number up to upper_limit
+abundants = findAllAbundantsBelow(UPPER_LIMIT)
 print(len(abundants))
 
-
-# Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
+# now find the sum for the non-matching numbers
 sum = 0
 for i in range(1,UPPER_LIMIT):
     sumComponents = findAsSumOfTwoAbundants(i,abundants)
     if len(sumComponents) == 0:
         sum += i
     if i % 1000 == 0:
-        print("At " + str(i))
-    #else:
-    #    pass #print(str(i) + " = " + str(sumComponents[0]) + " + " + str(sumComponents[1]))
+        print("At " + str(i) + " of " + str(UPPER_LIMIT))
 print("Sum is " + str(sum))

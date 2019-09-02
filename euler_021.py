@@ -10,13 +10,6 @@ import math
 # 
 # Evaluate the sum of all the amicable numbers under 10000.
 
-def factLessItself(x):
-    if x == 1:
-        return [1] # shortcut this special case
-    divisors = fact(x)
-    divisors.pop()
-    return divisors
-
 def sumDivisors(x):
     return sum(factLessItself(x))
 

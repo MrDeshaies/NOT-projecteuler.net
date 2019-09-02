@@ -9,3 +9,28 @@ import math
 # therefore d(220) = 284. The proper divisors of 284 are 1, 2, 4, 71 and 142; so d(284) = 220.
 # 
 # Evaluate the sum of all the amicable numbers under 10000.
+
+def factLessItself(x):
+    if x == 1:
+        return [1] # shortcut this special case
+    divisors = fact(x)
+    divisors.pop()
+    return divisors
+
+def sumDivisors(x):
+    return sum(factLessItself(x))
+
+amicableSet = set()
+
+#skip 1, since d(1) = 1, so does not satisby a!=b
+for x in range(2,10000):
+    if x in amicableSet:
+        continue
+    d = sumDivisors(x)
+    y = sumDivisors(d)
+    if d != x and y == x:
+        print( str(x) + " and " + str(d) + " are best buds.")
+        amicableSet.update([x,d])
+
+print(amicableSet)
+print(sum(amicableSet))

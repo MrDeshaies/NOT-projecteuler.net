@@ -21,6 +21,16 @@ def fact(number):
     result = []
     i = 1
 
+    # hardcode a few numbers as the math below only works for number > 4
+    if number == 1:
+        return [1]
+    elif number == 2:
+        return [1,2]
+    elif number == 3:
+        return [1,3]
+    elif number == 4:
+        return [1,2,4]
+    
     # the max possible factor. Initially we start at number/2. Let's say we find 3 is a factor,
     # we record 3 and x/3 as factors, and set the net upper bound as x/3.
     # E.g. if number is 32, first max = 16
@@ -35,7 +45,7 @@ def fact(number):
             result.append(i)
             x = number / i
             if x != i:
-                result.append(x)
+                result.append(int(x))
             maxPossibleFactor = min(maxPossibleFactor,x)
         i = i+1
     result.sort()

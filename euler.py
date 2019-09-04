@@ -54,7 +54,7 @@ def fact(number):
 def factLessItself(x):
     """Return a list of factors for the number, including 1 but NOT the number itself"""
     if x == 1:
-        return [1] # shortcut this special case
+        return [] # shortcut this special case
     divisors = fact(x)
     divisors.pop()
     return divisors

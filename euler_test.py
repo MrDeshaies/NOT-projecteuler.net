@@ -30,6 +30,14 @@ class TestEuler(unittest.TestCase):
     
     def test_fact41(self): #large-ish prime
          self.assertEqual(fact(41), [1,41])
+    
+    def test_factLessItself(self):
+        # 1 is a special case ?
+        self.assertTrue(len(factLessItself(1)) == 0, "1 should yield no factors")
+        for x in range(2,100):
+            expectedFactors = fact(x)
+            expectedFactors.pop() # get rid of itself
+            self.assertEquals(factLessItself(x), expectedFactors)
 
 if __name__ == '__main__':
     unittest.main()

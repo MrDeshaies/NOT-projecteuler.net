@@ -4,6 +4,6 @@ import itertools
 i = 1
 for x in itertools.permutations(range(10)):
     if i == 1000000:
-        print(x)
+        print("".join(str(d) for d in x))
         break
     i += 1

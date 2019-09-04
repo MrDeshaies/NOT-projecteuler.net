@@ -5,19 +5,13 @@
 a = 1
 b = 1
 seq = 3
-maxLength = 0
 while True:
     # generate the next one
     c = a + b
     a = b
     b = c
-
     length = len(str(c))
-    if length > maxLength:
-        maxLength = length
-        if maxLength % 100 == 0:
-            print("seq " + str(seq) + " has length " + str(length))
-
-    seq += 1
     if length == 1000:
+        print("seq " + str(seq) + " has length " + str(length))
         break
+    seq += 1

@@ -32,7 +32,7 @@ maxA = 0
 maxB = 0
 maxPrimes = 0
 
-for a in primes:
+for a in primes: # this was a bold try, to restrict a to just primes.. not sure why it works, but it does
     for b in primes:
         numPrimes = evaluatePair(a,b)
         if numPrimes > maxPrimes:

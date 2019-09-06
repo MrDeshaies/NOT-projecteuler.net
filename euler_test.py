@@ -38,6 +38,9 @@ class TestEuler(unittest.TestCase):
             expectedFactors = fact(x)
             expectedFactors.pop() # get rid of itself
             self.assertEquals(factLessItself(x), expectedFactors)
+    
+    def test_isPrime_negative(self):
+        self.assertFalse(isPrime(-1))
 
 if __name__ == '__main__':
     unittest.main()

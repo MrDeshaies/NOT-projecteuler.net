@@ -15,6 +15,8 @@ def sumOfDigitsToPower(number, power):
     return sum([int(x)**power for x in str(number)])
 
 overallSum = 0
+# I increased this times 10 at a time until it yielded no additional numbers
+# I did not analyze why that is.
 UPPER_LIMIT = 1000000
 POWER = 5
 

@@ -21,8 +21,11 @@ truncate_left  = lambda x : x[1:]
 truncate_right = lambda x : x[:-1]
 
 truncatable_primes = []
-# start at 12, to skip 2,3,5,7 which we're told to. Jump by 2 (even never prime except 2)
-for i in range(11,UPPER_LIMIT,2):
+
+prime_numbers = [x for x,prime in enumerate(primality) if prime]
+for i in prime_numbers:
+    if i < 11:
+        continue # skip 2, 3, 5, 7 as we're told to
     if is_truncatable_prime(i,truncate_left) and is_truncatable_prime(i,truncate_right):
         truncatable_primes.append(i)
 print("found {0} primes".format(len(truncatable_primes)))

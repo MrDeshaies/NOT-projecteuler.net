@@ -61,3 +61,16 @@ def factLessItself(x):
     divisors = fact(x)
     divisors.pop()
     return divisors
+
+def find_primality(limit):
+    """Builds a list from 0 to limit where values are a boolean indicating if the index is a prime.
+       In other words, find_primality(x)[n] will be true if n is a prime, for n <= x"""
+    # implementation of Sieve of Eratosthenes
+    sieve = [True] * (limit+1)
+    sieve[0] = sieve[1] = False
+
+    for i in range(2, math.ceil(math.sqrt(limit))+1):
+        if sieve[i]:
+            for j in range(i*i, limit+1, i):
+                sieve[j] = False
+    return sieve

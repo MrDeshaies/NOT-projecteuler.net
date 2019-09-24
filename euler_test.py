@@ -37,10 +37,17 @@ class TestEuler(unittest.TestCase):
         for x in range(2,100):
             expectedFactors = fact(x)
             expectedFactors.pop() # get rid of itself
-            self.assertEquals(factLessItself(x), expectedFactors)
+            self.assertEqual(factLessItself(x), expectedFactors)
     
     def test_isPrime_negative(self):
         self.assertFalse(isPrime(-1))
+    
+    def test_primality(self):
+        UPPER_LIMIT = 101
+        sieve = find_primality(UPPER_LIMIT)
+        self.assertEqual(len(sieve), UPPER_LIMIT+1)
+        for i in range(2,UPPER_LIMIT+1):
+            self.assertEqual(sieve[i], isPrime(i), "sieve failed for value " + str(i))
 
 if __name__ == '__main__':
     unittest.main()

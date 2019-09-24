@@ -4,12 +4,6 @@ import math
 from euler import *
 
 limit = 2000000
-sum = 0
-x = 2
-while True:
-    if x >= limit:
-        break
-    if isPrime(x):
-        sum += x
-    x += 1
-print(sum)
+primality = find_primality(limit)
+total = sum([x for x,prime in enumerate(primality) if prime])
+print(total)

@@ -26,7 +26,9 @@ def count_triplets_for_perimeter(perimeter):
 
 max_peri = 0
 max_count = 0
-for i in range(1,1000):
+# only need to consider even perimeters.
+# If it's pythagorean triplet, perimeter will be odd. Proved it on paper.
+for i in range(2,1000,2):
     c = count_triplets_for_perimeter(i)
     if c > max_count:
         max_count = c

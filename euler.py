@@ -74,3 +74,8 @@ def find_primality(limit):
             for j in range(i*i, limit+1, i):
                 sieve[j] = False
     return sieve
+
+def list_primes(limit):
+    primality = find_primality(limit)
+    prime_numbers = [x for x,prime in enumerate(primality) if prime]
+    return prime_numbers

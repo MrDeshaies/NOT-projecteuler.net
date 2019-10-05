@@ -48,6 +48,10 @@ class TestEuler(unittest.TestCase):
         self.assertEqual(len(sieve), UPPER_LIMIT+1)
         for i in range(2,UPPER_LIMIT+1):
             self.assertEqual(sieve[i], isPrime(i), "sieve failed for value " + str(i))
+    
+    def test_list_primes(self):
+        self.assertEqual(list_primes(10), [2,3,5,7])
+        self.assertEqual(list_primes(11), [2,3,5,7,11])
 
 if __name__ == '__main__':
     unittest.main()

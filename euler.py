@@ -1,4 +1,5 @@
 import math
+import re
 
 def isPrime(x):
     # 0 and negative aren't prime
@@ -79,3 +80,17 @@ def list_primes(limit):
     primality = find_primality(limit)
     prime_numbers = [x for x,prime in enumerate(primality) if prime]
     return prime_numbers
+
+def digit_repeats(number):
+    number_string = str(number)
+    return re.search(r"(.).*\1", number_string) != None
+
+def pandigital(number):
+    number_string = str(number)
+    return len(number_string) == 9 and pandigital_partial(number_string)
+
+def pandigital_partial(number):
+    number_string = str(number)
+    if len(number_string) > 9:
+        return False
+    return all([str(x) in number_string for x in range(1,len(number_string)+1)])

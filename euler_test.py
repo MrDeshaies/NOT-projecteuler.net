@@ -52,6 +52,32 @@ class TestEuler(unittest.TestCase):
     def test_list_primes(self):
         self.assertEqual(list_primes(10), [2,3,5,7])
         self.assertEqual(list_primes(11), [2,3,5,7,11])
+    
+    def test_pandigital_partial(self):
+        self.assertTrue(pandigital_partial(1))
+        self.assertTrue(pandigital_partial(12))
+        self.assertTrue(pandigital_partial(123))
+        self.assertTrue(pandigital_partial(123456789))
+        self.assertTrue(pandigital_partial(918273645))
+
+        self.assertFalse(pandigital_partial(2))
+        self.assertFalse(pandigital_partial(11))
+        self.assertFalse(pandigital_partial(13))
+        self.assertFalse(pandigital_partial(1235))
+        self.assertFalse(pandigital_partial(12350))
+        self.assertFalse(pandigital_partial(1234567891))
+    
+    def test_pandigital(self):
+        self.assertFalse(pandigital(1))
+        self.assertFalse(pandigital(12))
+        self.assertFalse(pandigital(123))
+        self.assertFalse(pandigital(1234567891))
+        self.assertFalse(pandigital("1234567891"))
+
+        self.assertTrue(pandigital(123456789))
+        self.assertTrue(pandigital(918273645))
+        self.assertTrue(pandigital("123456789"))
+
 
 if __name__ == '__main__':
     unittest.main()

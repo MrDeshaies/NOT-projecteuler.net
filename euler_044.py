@@ -16,6 +16,8 @@ def generate_pentagonal(how_many):
 
 def is_pentagonal(x):
     # nifty formula lifted from wiki. it's pentagonal when 'n' is a whole number
+    # actually easy to derive taking the formula to generate, and applying the
+    # quadratic formula to it...
     n = (sqrt(24*x + 1) + 1) / 6
     return modf(n)[0] == 0.0
 

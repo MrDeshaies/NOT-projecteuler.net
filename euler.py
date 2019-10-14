@@ -3,7 +3,7 @@ import re
 
 def isPrime(x):
     # 0 and negative aren't prime
-    if x <= 0:
+    if x <= 1:
         return False
     # even numbers except 2 are not prime. this lets us only check odd factors
     if x == 2:

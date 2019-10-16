@@ -17,6 +17,10 @@ max_length = 0
 max_prime = 0
 for i in range(0,len(primes)):
     for j in range(i+i,len(primes)):
+        if primes[i] * max_length > UPPER_LIMIT:
+            # end earlier when there are no more possible solutions
+            # we know primes[i+] > primes[i], and the sum will bust
+            break
         s = sum(primes[i:j])
         if s > UPPER_LIMIT:
             break

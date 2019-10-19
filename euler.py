@@ -78,6 +78,9 @@ def find_primality(limit):
 
 def list_primes(limit):
     primality = find_primality(limit)
+    return filter_primes(primality)
+
+def filter_primes(primality):
     prime_numbers = [x for x,prime in enumerate(primality) if prime]
     return prime_numbers
 

@@ -7,11 +7,11 @@
 # 
 # Which prime, below one-million, can be written as the sum of the most consecutive primes?
 
-from euler import find_primality,list_primes
+from euler import find_primality,filter_primes
 
 UPPER_LIMIT = 1000000
-primes = list_primes(UPPER_LIMIT)
 primality = find_primality(UPPER_LIMIT)
+primes = filter_primes(primality)
 
 max_length = 0
 max_prime = 0

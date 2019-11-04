@@ -15,3 +15,8 @@ print(max_sum)
 
 # the whole thing as a one liner... ugh, readability!
 print( max([sum([int(d) for d in str(a**b)]) for a in range(100) for b in range(100)]))
+
+# getting crazy now
+import itertools
+print(max( map(lambda x: sum([int(d) for d in str(x)]), \
+    map(lambda n: n[0] ** n[1], itertools.product(range(100), repeat=2)))))

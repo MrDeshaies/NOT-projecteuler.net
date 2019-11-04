@@ -12,3 +12,6 @@ for a in range(100):
     for b in range(100):
         max_sum = max(max_sum, sum_digits(a**b))
 print(max_sum)
+
+# the whole thing as a one liner... ugh, readability!
+print( max([sum([int(d) for d in str(a**b)]) for a in range(100) for b in range(100)]))

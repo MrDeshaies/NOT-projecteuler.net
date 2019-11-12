@@ -26,14 +26,14 @@ def load_encrypted(filename):
     f = open(filename, "r")
     data = f.readline()
     f.close()
-
     # file looks like 36,22,80,0,0,4,23,25,19,17
-    # split will keep an empty token at the front and end. Get rid of them
     codes = [int(x) for x in data.split(",")]
     print("Loaded file {0} with {1} codes".format(filename,len(codes)))
     return codes
 
-def codes_as_string(codes,length):
+def codes_as_string(codes,length=0):
+    if length == 0: # the whole string
+        return "".join([chr(x) for x in codes])
     return "".join([chr(x) for x in codes[:length]])
 
 def print_as_string(codes,length):
@@ -60,7 +60,7 @@ for candidate_key in permutations("abcdefghijklmnopqrstuvwxyz",3):
        c += 1
        print("Found key: " + str(candidate_key))
        print_as_string(decrypted,200)
-       decrypted_string = codes_as_string(decrypted,len(decrypted))
+       decrypted_string = codes_as_string(decrypted)
 print(c)
 if c == 1:
     print(sum([ord(x) for x in decrypted_string]))

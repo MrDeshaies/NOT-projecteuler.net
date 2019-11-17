@@ -20,6 +20,13 @@ def isPrime(x):
         candidate += 2 # only consider odd factors
     return True
 
+IS_PRIME_MEMO = {}
+def mIsPrime(x):
+    """Same as isPrime, but memoized"""
+    if x not in IS_PRIME_MEMO:
+        IS_PRIME_MEMO[x] = isPrime(x)
+    return IS_PRIME_MEMO[x]
+
 def fact(number):
     """Return a list of factors for the number, including 1 and number"""
     result = []

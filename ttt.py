@@ -2,7 +2,7 @@
 import random
 BLANK = ' '
 def print_grid(grid):
-    print(" {} | {} | {} \n-----------\n {} | {} | {} \n-----------\n {} | {} | {} ".format(*grid))
+    print(" {} | {} | {} \n---+---+---\n {} | {} | {} \n---+---+---\n {} | {} | {} ".format(*grid))
 
 def get_move(grid):
     while True:

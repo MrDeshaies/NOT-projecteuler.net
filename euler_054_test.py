@@ -1,7 +1,7 @@
 import unittest
 from euler_054 import *
 
-class Test35(unittest.TestCase):
+class Test54(unittest.TestCase):
 
     def setUp(self):
         pass

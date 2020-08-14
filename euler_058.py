@@ -37,32 +37,23 @@ def generateNextB(previousVal, position):
     return previousVal + 4*((position+1)//2)
 
 # represents the values with grid-size 1.
-seriesA = [1]
-seriesB = [1]
+currA = 1
+currB = 1
 gridSize = 1
-
 numPrimes = 0
 
 while True:
-    gridSize += 2 # grow in both dimensions
-    seriesA.append(generateNextA(seriesA[-1], gridSize-2))
-    seriesA.append(generateNextA(seriesA[-1], gridSize-1))
-    seriesB.append(generateNextB(seriesB[-1], gridSize-2))
-    seriesB.append(generateNextB(seriesB[-1], gridSize-1))
-
-    if isPrime(seriesA[-1]):
-        numPrimes += 1
-    if isPrime(seriesA[-2]):
-        numPrimes += 1
-    if isPrime(seriesB[-1]):
-        numPrimes += 1
-    if isPrime(seriesB[-2]):
-        numPrimes += 1
+    for i in range(2): #grow both dimensions
+        nextA,nextB = generateNextA(currA, gridSize), generateNextB(currB, gridSize)
+        if isPrime(nextA):
+            numPrimes += 1
+        if isPrime(nextB):
+            numPrimes += 1
+        gridSize += 1
+        currA,currB = nextA,nextB
     
-    percentage = numPrimes*100/(len(seriesA)+len(seriesB)-1)
+    percentage = numPrimes*100/(gridSize//2*4+1)
     
     if percentage < 10.0:
         print("{} grid size = {} primes. {}%".format(gridSize, numPrimes, percentage))
         break
-
-# 26241

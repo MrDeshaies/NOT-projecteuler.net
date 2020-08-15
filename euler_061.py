@@ -68,8 +68,13 @@ def find_next_terms(current_terms, missing_groups, tests):
         else:
             return
     
-    last_term_digits = str(current_terms[-1])[-2:]
+    if len(current_terms) == 0:
+        gr = missing_groups.pop()
+        for x in gr:
+            find_next_terms([x], missing_groups, tests)
+        return
     
+    last_term_digits = str(current_terms[-1])[-2:]
     for mg in permutations(missing_groups):
         mg = list(mg)
         next_group = mg.pop()
@@ -86,8 +91,7 @@ def solve_061():
     oct = [x for x in range(1000,10000) if is_octagonal(x)  and "0" != str(x)[2]]
     all_figurate_tests = [is_triangular, is_square, is_pentagonal, is_hexagonal, is_heptagonal, is_octagonal]
 
-    for x in tri:
-        find_next_terms([x], [sqr,pen,hex,hep,oct], all_figurate_tests)
+    find_next_terms([], [tri,sqr,pen,hex,hep,oct], all_figurate_tests)
 
 if __name__ == '__main__':
     solve_061()

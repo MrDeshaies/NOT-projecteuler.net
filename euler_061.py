@@ -20,32 +20,8 @@
 # Find the sum of the only ordered set of six cyclic 4-digit numbers for which each polygonal type: 
 # triangle, square, pentagonal, hexagonal, heptagonal, and octagonal, is represented by a different number in the set.
 
-from math import sqrt, modf
 from itertools import permutations
-
-def is_triangular(x):
-    n = (sqrt(8*x + 1) - 1) / 2
-    return modf(n)[0] == 0.0
-
-def is_square(x):
-    n = sqrt(x)
-    return modf(n)[0] == 0.0
-
-def is_pentagonal(x):
-    n = (sqrt(24*x + 1) + 1) / 6
-    return modf(n)[0] == 0.0
-
-def is_hexagonal(x):
-    n = (sqrt(8*x + 1) + 1) / 4
-    return modf(n)[0] == 0.0
-
-def is_heptagonal(x):
-    n = (sqrt(40*x + 9) + 3) / 10
-    return modf(n)[0] == 0.0
-
-def is_octagonal(x):
-    n = (sqrt(3*x + 1) + 1) / 3
-    return modf(n)[0] == 0.0
+from figurate_numbers import *
 
 def is_cyclic_set(numbers):
     numbers = [str(x) for x in numbers]

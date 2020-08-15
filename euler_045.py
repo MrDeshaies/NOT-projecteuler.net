@@ -7,23 +7,7 @@
 # 
 # Find the next triangle number that is also pentagonal and hexagonal.
 
-from math import sqrt,modf
-
-# took the formulas above, applied the quadratic formula, and derived the tests below
-def triangular(n):
-    return int(n*(n+1)/2)
-
-def is_triangular(x):
-    n = (sqrt(8*x + 1) - 1) / 2
-    return modf(n)[0] == 0.0
-
-def is_pentagonal(x):
-    n = (sqrt(24*x + 1) + 1) / 6
-    return modf(n)[0] == 0.0
-
-def is_hexagonal(x):
-    n = (sqrt(8*x + 1) + 1) / 4
-    return modf(n)[0] == 0.0
+from figurate_numbers import *
 
 # sanity check
 for x in [triangular(285),triangular(286)]:

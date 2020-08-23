@@ -11,7 +11,8 @@
 # Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
 
 # [Ben note: below is the straightforward O(n) algorithm. We could have a O(1) solution by deriving the 
-# formula for sum (known to be n(n+1)/2) and the sum of squares (tbd)]
+# formula for sum (known to be n(n+1)/2) and the sum of squares (tbd).
+# But... O(n) algo for 100,000,000 takes less than a minute... and deriving the formula more time ;)]
 
 def sum_square_difference(limit):
     sum_square = sum([i*i for i in range(limit+1)])

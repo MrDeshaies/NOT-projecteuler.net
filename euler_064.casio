@@ -1,0 +1,19 @@
+0→C
+For 2→N To 10000
+    MOD(N,100)=0⇒Locate 1,1,N
+    Int √N→R
+    N=R²⇒Next
+    0→M
+    1→D
+    R→A
+    0→P
+    Do
+        D×A-M→M
+        (N-M²)/D→D
+        Int ((R+M)/D)→A
+        P+1→P
+    LpWhile A≠2×R
+    MOD(P,2)=1⇒C+1→C
+Next
+"ANSWER"
+C

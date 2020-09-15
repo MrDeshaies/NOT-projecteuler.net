@@ -1,0 +1,29 @@
+0→C
+FOR(N,2,10000)
+    DISP N
+    If remainder(N,5)=0
+    Then
+        Output(1,1,N)
+    End
+    
+    iPart(√(N))→R
+    If N≠R²
+    Then
+        0→M
+        1→D
+        R→A
+        0→P
+        Repeat A=2*R
+            D*A-M→M
+            (N-M²)/D→D
+            iPart((R+M)/D)→A
+            P+1→P
+        End
+
+        If remainder(P,2)=1
+        Then
+            C+1→C
+        End
+    End
+End
+Disp C

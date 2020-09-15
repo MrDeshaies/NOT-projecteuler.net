@@ -1,11 +1,10 @@
+ClrHome
 0→C
 FOR(N,2,10000)
-    DISP N
-    If remainder(N,5)=0
+    If remainder(N,100)=0
     Then
         Output(1,1,N)
     End
-    
     iPart(√(N))→R
     If N≠R²
     Then
@@ -19,11 +18,11 @@ FOR(N,2,10000)
             iPart((R+M)/D)→A
             P+1→P
         End
-
         If remainder(P,2)=1
         Then
             C+1→C
         End
     End
 End
+Disp "ANSWER"
 Disp C

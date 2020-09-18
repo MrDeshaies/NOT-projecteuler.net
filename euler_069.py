@@ -41,7 +41,7 @@ def solve_69_fast(upper_limit):
     # solve_69(100) = 30 = 2*3*5
     # solve_69(1000) = 210 = 2*3*5*7
     # get it? you multiply the primes until you get the largest  number less than the limit
-    primes = list_primes(floor(sqrt(upper_limit))) # get enough of them
+    primes = list_primes(100) # get enough of them
     n = 1
     factors_used = []
     for p in primes:

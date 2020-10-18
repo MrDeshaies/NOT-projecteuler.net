@@ -6,9 +6,7 @@
 
 from fractions import Fraction
 from math import ceil
-
-def sum_digits(x):
-    return sum([int(d) for d in str(x)])
+from euler import sum_digits, convert_convergents_to_fraction
 
 def generate_convergents_for_e(n):
     result = [2]
@@ -16,16 +14,6 @@ def generate_convergents_for_e(n):
     for k in range(1,groups+1):
         result += [1,2*k,1]
     return result[0:n]
-
-def convert_convergents_to_fraction(partial_denominators):
-    if len(partial_denominators) == 1:
-        return Fraction(partial_denominators[0])
-    
-    # build the fraction bottom-up
-    result = Fraction(partial_denominators[-1])
-    for term in partial_denominators[-2::-1]:
-        result = Fraction(term) + Fraction(1,result)
-    return result
 
 if __name__ == '__main__':
     for i in [100]:#range(1,11):

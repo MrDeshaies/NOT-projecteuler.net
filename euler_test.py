@@ -77,6 +77,26 @@ class TestEuler(unittest.TestCase):
         self.assertTrue(pandigital(123456789))
         self.assertTrue(pandigital(918273645))
         self.assertTrue(pandigital("123456789"))
+    
+    def test_sum_digits(self):
+        self.assertEqual(1, sum_digits(1))
+        self.assertEqual(2, sum_digits(2))
+        self.assertEqual(3, sum_digits(12))
+        self.assertEqual(10, sum_digits(1234))
+        self.assertEqual(36, sum_digits(9999))
+    
+    def test_convert_convergents_to_fraction(self):
+        cctf = convert_convergents_to_fraction
+        # single values
+        self.assertEqual(Fraction(1), cctf([1]))
+        self.assertEqual(Fraction(2), cctf([2]))
+
+        # two values
+        self.assertEqual(Fraction(3,2), cctf([1,2]))
+        self.assertEqual(Fraction(7,3), cctf([2,3]))
+
+        # three values
+        self.assertEqual(Fraction(37,16), cctf([2,3,5]))
 
 
 if __name__ == '__main__':

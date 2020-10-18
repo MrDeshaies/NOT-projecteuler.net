@@ -19,6 +19,7 @@
 
 from math import sqrt, floor
 from fractions import Fraction
+from euler import convert_convergents_to_fraction
 
 # Source for continued-fraction expansion solution to Pell from paper of H.W. Lenstra Jr.
 # http://www.ams.org/notices/200202/fea-lenstra.pdf
@@ -46,16 +47,6 @@ def find_period_squareroot_continued_fraction(num):
         if a == 2 * a0:
             return partial_denominators
 
-def build_continued_fraction_approximation(partial_denominators):
-    if len(partial_denominators) == 1:
-        return Fraction(partial_denominators[0])
-    
-    # build the fraction bottom-up
-    result = Fraction(partial_denominators[-1])
-    for term in partial_denominators[-2::-1]:
-        result = Fraction(term) + Fraction(1,result)
-    return result
-
 def solve_pell(d):
     partial_denominators = find_period_squareroot_continued_fraction(d)
     # from the H.W. Lenstra Jr. paper:
@@ -68,13 +59,13 @@ def solve_pell(d):
         # we repeat the period when the period length is odd  (the first term is not part of the period)
         partial_denominators = partial_denominators + partial_denominators[1:]
     
-    candidate = build_continued_fraction_approximation(partial_denominators)
+    candidate = convert_convergents_to_fraction(partial_denominators)
     [x,y] = [candidate.numerator,candidate.denominator]
     if x**2 - d*y**2 == 1: # see if it satisfies the equation
         return [x,y]
     
     # sometimes the above fails for some reason, but truncating the last term solves it...
-    candidate = build_continued_fraction_approximation(partial_denominators[:-1])
+    candidate = convert_convergents_to_fraction(partial_denominators[:-1])
     [x,y] = [candidate.numerator,candidate.denominator]
     if x**2 - d*y**2 == 1:  # see if it satisfies the equation
         return [x,y]

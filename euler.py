@@ -1,5 +1,6 @@
 import math
 import re
+from fractions import Fraction
 
 def isPrime(x):
     # 0 and negative aren't prime
@@ -104,3 +105,19 @@ def pandigital_partial(number):
     if len(number_string) > 9:
         return False
     return all([str(x) in number_string for x in range(1,len(number_string)+1)])
+
+def convert_convergents_to_fraction(partial_denominators):
+    """return Fraction
+    Build a fraction from the partial denominators list for a continuous fraction.
+    E.g. input [1;2,3,4] would return 1 + (1/(2+1/(3+1/4))) or 43/30"""
+    if len(partial_denominators) == 1:
+        return Fraction(partial_denominators[0])
+    
+    # build the fraction bottom-up
+    result = Fraction(partial_denominators[-1])
+    for term in partial_denominators[-2::-1]:
+        result = Fraction(term) + Fraction(1,result)
+    return result
+
+def sum_digits(x):
+    return sum([int(d) for d in str(x)])

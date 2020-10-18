@@ -47,15 +47,12 @@ def find_period_squareroot_continued_fraction(num):
             return partial_denominators
 
 def build_continued_fraction_approximation(partial_denominators):
-    partial_denominators = partial_denominators.copy()
-
     if len(partial_denominators) == 1:
         return Fraction(partial_denominators[0])
     
     # build the fraction bottom-up
-    result = Fraction(partial_denominators.pop())
-    partial_denominators.reverse()
-    for term in partial_denominators:
+    result = Fraction(partial_denominators[-1])
+    for term in partial_denominators[-2::-1]:
         result = Fraction(term) + Fraction(1,result)
     return result
 

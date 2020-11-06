@@ -44,10 +44,10 @@ class Node:
     def is_root(self):
         return len(self.incoming) == 0
     
-    def depth_first_longuest_path(self):
+    def depth_first_longest_path(self):
         string = str(self.value)
         max_sub = max(
-            [n.depth_first_longuest_path() for n in self.outgoing.values()], 
+            [n.depth_first_longest_path() for n in self.outgoing.values()], 
             key=len, default='')
         return string + max_sub
     
@@ -77,7 +77,7 @@ def solve_079():
     for n in nodes.values():
         if n.is_root():
             print("Root note: {}".format(n))
-            pwd = n.depth_first_longuest_path()
+            pwd = n.depth_first_longest_path()
             print("{} is potential passcode {}".format(pwd,
                 is_potential_passcode(pwd, attempts)))
 

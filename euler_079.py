@@ -46,13 +46,9 @@ class Node:
     
     def depth_first_longuest_path(self):
         string = str(self.value)
-        max_len = 0
-        max_sub = ''
-        for n in self.outgoing.values():
-            sub = n.depth_first_longuest_path()
-            if len(sub) > max_len:
-                max_len = len(sub)
-                max_sub = sub
+        max_sub = max(
+            [n.depth_first_longuest_path() for n in self.outgoing.values()], 
+            key=len, default='')
         return string + max_sub
     
     def __str__(self):

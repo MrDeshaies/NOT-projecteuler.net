@@ -24,26 +24,42 @@
 
 from itertools import combinations, permutations
 
-def gon_to_string(gon_list):
-    g = gon_list # heh
-    smallest = min([g[3],g[4],g[5]])
-    if g[3] == smallest:
-        return ''.join([str(i) for i in [g[3],g[0],g[1],g[5],g[1],g[2],g[4],g[2],g[0]]])
-    elif g[4] == smallest:
-        return ''.join([str(i) for i in [g[4],g[2],g[0],g[3],g[0],g[1],g[5],g[1],g[2]]])
-    else:
-        return ''.join([str(i) for i in [g[5],g[1],g[2],g[4],g[2],g[0],g[3],g[0],g[1]]])
+def start_tuple_idx(gon, tuples):
+    min_val = 999999999
+    min_idx = -1
+    for i,t in enumerate(tuples):
+        if gon[t[0]] < min_val:
+            min_val = gon[t[0]]
+            min_idx = i
+    return min_idx
+
+def gon_to_string(gon, tuples):
+    start_tuple = start_tuple_idx(gon, tuples)
+    num_tuples = len(tuples)
+    result = ""
+    for t in [(x+start_tuple)%num_tuples for x in range(num_tuples)]:
+        result += "".join([str(gon[i]) for i in tuples[t]])
+    return result
+
+def is_magic(gon, tuples):
+    sums = [sum([gon[i] for i in t]) for t in tuples]
+    return min(sums) == max(sums)
 
 n = 0
+m = 0
+gon5_tuples = [(5,0,1), (9,1,2), (8,2,3), (7,3,4), (6,4,0)]
 as_strings = set()
-for i in permutations(range(1,7),3):
-    #print(str(list(i)))
-    for j in permutations(set(range(1,7)) - set(i)):
+for i in permutations(range(1,11),5):
+    for j in permutations(set(range(1,11)) - set(i)):
         x = list(i) + list(j)
-        s1, s2, s3 = sum([x[0],x[1],x[3]]), sum([x[0],x[2],x[4]]), sum([x[1],x[2],x[5]])
-        if s1 == s2 and s2 == s3:
-            as_strings.add(gon_to_string(x))
-            print("{} with total {}, str={}".format(x, s1,gon_to_string(x)))
-            n += 1
-print(n)
+        n += 1
+        if n % 100_000 == 0:
+            print(n)
+        if not is_magic(x, gon5_tuples):
+            continue
+        m += 1
+        gs = gon_to_string(x, gon5_tuples)
+        as_strings.add(gs)
+        print("{}, str={}".format(x, gs))
+print("Found {} magic".format(m))
 print(max(as_strings))

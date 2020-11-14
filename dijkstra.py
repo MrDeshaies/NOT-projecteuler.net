@@ -6,7 +6,7 @@ class Node:
     def add_neighbor(self,n):
         self.neighbors.append(n)
 
-def dijkstra(nodes, source, target):
+def dijkstra_compute_distances(nodes, source):
     dist = {}
     prev = {}
     Q = []
@@ -28,6 +28,11 @@ def dijkstra(nodes, source, target):
                 dist[v] = alt
                 prev[v] = u
     
+    return dist, prev
+
+def dijkstra(nodes, source, target):
+    dist, prev = dijkstra_compute_distances(nodes, source)
+
     # compute path from target to source
     shortest_path = []
     u = target

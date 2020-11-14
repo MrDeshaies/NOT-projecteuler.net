@@ -7,43 +7,12 @@
 # moving right and down in p81_matrix.txt, a 31K text file containing an 
 # 80 by 80 matrix.
 
-from dijkstra import *
+from dijkstra import dijkstra,value_sum
+import euler_081_083_matrix as matrix
 
-def load_matrix_from_file(filename):
-    matrix = []
-    f = open(filename, "r")
-    for line in f:
-        matrix.append([int(x) for x in line.strip().split(",")])    
-    f.close()
-    return matrix
-
-def node_at(nd,x,y,value):
-    key = "{},{}".format(x,y)
-    if key in nd:
-        return nd[key]
-    node = Node(value)
-    nd[key] = node
-    return node
-
-def convert_matrix_to_graph(m):
-    nd = {} # node dictionary, key = "1,5" index in matrix
-    all_nodes = []
-    for x,row in enumerate(m):
-        for y,value in enumerate(row):
-            curr = node_at(nd, x, y, value)
-            all_nodes.append(curr)
-            # add right
-            if y < len(row)-1:
-                right = node_at(nd, x, y+1, m[x][y+1])
-                curr.add_neighbor(right)
-            # add down
-            if x < len(m)-1:
-                down = node_at(nd, x+1, y, m[x+1][y])
-                curr.add_neighbor(down)
-    return all_nodes
-
-m = load_matrix_from_file("p081_matrix.txt")
-nodes = convert_matrix_to_graph(m)
+m = matrix.load_matrix_from_file("p081_matrix.txt")
+nodes = matrix.convert_matrix_to_graph(
+    m, include_right=True, include_down=True)
 short_path = dijkstra(nodes, nodes[0], nodes[-1])
 total = value_sum(short_path)
 print(total)

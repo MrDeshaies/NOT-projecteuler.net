@@ -26,21 +26,22 @@ def find_min_sum_for_row(m,nodes,x):
     print("Row {} has min value on right with {} for sum {}".format(x,min_right_node.value,min_right_dist))
     return min_right_dist
 
-m = matrix.load_matrix_from_file("p082_matrix.txt")
-nodes = matrix.convert_matrix_to_graph(
-    m, include_right=True, include_down=True, include_up=True)
-
-# parallelize the processing... send each row to a different core
 row_small_sums = []
 def collect_result(result):
     global row_small_sums
     row_small_sums.append(result)
 
-print("Paralellizing across {} processors".format(mp.cpu_count()))
-pool = mp.Pool(mp.cpu_count())
-[pool.apply_async(find_min_sum_for_row, args=(m,nodes,x), callback=collect_result) for x in range(len(m))]
-pool.close()
-pool.join()
+if __name__ == '__main__':
+    m = matrix.load_matrix_from_file("p082_matrix.txt")
+    nodes = matrix.convert_matrix_to_graph(
+        m, include_right=True, include_down=True, include_up=True)
 
-# print final result
-print("And the answer is... ", min(row_small_sums))
+    # parallelize the processing... send each row to a different core
+    print("Paralellizing across {} processors".format(mp.cpu_count()))
+    pool = mp.Pool(mp.cpu_count())
+    [pool.apply_async(find_min_sum_for_row, args=(m,nodes,x), callback=collect_result) for x in range(len(m))]
+    pool.close()
+    pool.join()
+
+    # print final result
+    print("And the answer is... ", min(row_small_sums))

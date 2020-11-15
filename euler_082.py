@@ -9,14 +9,10 @@
 
 from dijkstra import dijkstra_compute_distances,value_sum
 import euler_081_083_matrix as matrix
+import multiprocessing as mp
 
-m = matrix.load_matrix_from_file("p082_matrix.txt")
-nodes = matrix.convert_matrix_to_graph(
-    m, include_right=True, include_down=True, include_up=True)
-
-row_length = len(m[0])
-min_overall = 999999999999
-for x in range(len(m)):
+def find_min_sum_for_row(m,nodes,x):
+    row_length = len(m[0])
     source = nodes[x*row_length]
     dist, prev = dijkstra_compute_distances(nodes, source)
     
@@ -28,6 +24,23 @@ for x in range(len(m)):
             min_right_dist = dist[right]
             min_right_node = right
     print("Row {} has min value on right with {} for sum {}".format(x,min_right_node.value,min_right_dist))
-    if min_right_dist < min_overall:
-        min_overall = min_right_dist
-print("And the answer is... {}".format(min_overall))
+    return min_right_dist
+
+m = matrix.load_matrix_from_file("p082_matrix.txt")
+nodes = matrix.convert_matrix_to_graph(
+    m, include_right=True, include_down=True, include_up=True)
+
+# parallelize the processing... send each row to a different core
+row_small_sums = []
+def collect_result(result):
+    global row_small_sums
+    row_small_sums.append(result)
+
+print("Paralellizing across {} processors".format(mp.cpu_count()))
+pool = mp.Pool(mp.cpu_count())
+[pool.apply_async(find_min_sum_for_row, args=(m,nodes,x), callback=collect_result) for x in range(len(m))]
+pool.close()
+pool.join()
+
+# print final result
+print("And the answer is... ", min(row_small_sums))

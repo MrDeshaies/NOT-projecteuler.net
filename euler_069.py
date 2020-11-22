@@ -11,19 +11,7 @@
 
 # [Ben: two numbers are relatively prive (coprime) if their GCD is 1]
 from math import gcd, sqrt, floor
-from euler import list_primes
-
-def are_coprime(x,y):
-    return gcd(x,y) == 1
-
-def phi(n):
-    i = 1
-    count = 0
-    while i < n:
-        if are_coprime(i,n):
-            count += 1
-        i += 1
-    return count
+from euler import list_primes, are_coprime, phi
 
 def n_over_phi(n):
     return n / phi(n)

@@ -121,3 +121,31 @@ def convert_convergents_to_fraction(partial_denominators):
 
 def sum_digits(x):
     return sum([int(d) for d in str(x)])
+
+def is_permutation(x,y):
+    x,y = list(str(x)),list(str(y))
+    if len(x) != len(y):
+        return False
+    # check if all the characters of x are in y
+    for i in x:
+        if i in y:
+            y.remove(i)
+        else:
+            return False
+    return True
+
+def are_coprime(x,y):
+    return math.gcd(x,y) == 1
+
+def phi(n):
+    res = n
+    i = 2
+    while i*i <= n:
+        if n % i == 0:
+            while n % i == 0:
+                n = n//i
+            res -= res // i
+        i += 1
+    if n > 1:
+        res -= res // n
+    return res

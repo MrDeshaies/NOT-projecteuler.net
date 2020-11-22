@@ -5,17 +5,7 @@
 #
 # Find the smallest cube for which exactly five permutations of its digits are cube.
 
-def is_permutation(x,y):
-    x,y = list(str(x)),list(str(y))
-    if len(x) != len(y):
-        return False
-    # check if all the characters of x are in y
-    for i in x:
-        if i in y:
-            y.remove(i)
-        else:
-            return False
-    return True
+from euler import is_permutation
 
 def find_cube_with_number_of_permutations(number_of_permutations):
     all_cubes = [i**3 for i in range(10000)]

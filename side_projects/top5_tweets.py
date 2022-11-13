@@ -36,6 +36,7 @@ tweet_data = [[
 tweet_frame = pd.DataFrame(data=tweet_data, columns=['id', 'likes', 'retweets', 'quotes', 'created_at', 'text'])
 tweet_frame['created_date'] = tweet_frame['created_at'].dt.date
 tweet_frame['total_retweets'] = tweet_frame['retweets'] + tweet_frame['quotes']
+tweet_frame['total_engagements'] = tweet_frame['total_retweets'] + tweet_frame['likes']
 
 print("=== Top likes ===")
 top_posts = tweet_frame.sort_values(by='likes', ascending=False)[:10][['likes', 'created_date', 'text']]
@@ -43,4 +44,8 @@ print(top_posts)
 
 print("=== Top retweets ===")
 top_posts = tweet_frame.sort_values(by='total_retweets', ascending=False)[:10][['total_retweets', 'created_date', 'text']]
+print(top_posts)
+
+print("=== Top engagements ===")
+top_posts = tweet_frame.sort_values(by='total_engagements', ascending=False)[:10][['total_engagements', 'likes', 'total_retweets', 'created_date', 'text']]
 print(top_posts)

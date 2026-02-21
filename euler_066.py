@@ -19,14 +19,11 @@
 
 from math import sqrt, floor
 from fractions import Fraction
-from euler import convert_convergents_to_fraction
+from euler import convert_convergents_to_fraction, is_perfect_square
 
 # Source for continued-fraction expansion solution to Pell from paper of H.W. Lenstra Jr.
 # http://www.ams.org/notices/200202/fea-lenstra.pdf
 # Continued-fraction expansion of square root stolen from my solution to Euler 064.
-
-def is_perfect_square(x):
-    return int(sqrt(x)) ** 2 == x
 
 def find_period_squareroot_continued_fraction(num):
     a0 = floor(sqrt(num))

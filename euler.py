@@ -149,3 +149,6 @@ def phi(n):
     if n > 1:
         res -= res // n
     return res
+
+def is_perfect_square(x):
+    return int(math.sqrt(x)) ** 2 == x
